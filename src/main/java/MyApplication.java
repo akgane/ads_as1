@@ -16,6 +16,21 @@ public class MyApplication {
         }
     }
 
+    /**
+     * This method is used for inputting required variables, calling
+     * required method, and outputting result, depending on user choice
+     * from main method.
+     * It uses switch-case construction for calling and outputting
+     * only necessary method.
+     * Variables are created at the beginning of the method and then
+     * getting values in 'case' blocks. User input is handled by the Utils
+     * class methods. 'default' not necessary because chooseMethod other cases
+     * are excluded in the main method.
+     *
+     * Required method is called as value for placeholder in formatted string.
+     * @param option The method, chosen by user in main method.
+     * @param scanner The Scanner object, used for reading System.in stream.
+     */
     static void chooseMethod(int option, Scanner scanner){
         int n, k, a, b;
         String s;
@@ -68,6 +83,7 @@ public class MyApplication {
                 System.out.printf(Constants.M_GCD, a, b, gcd(a, b));
                 break;
         }
+        Utils.sleep(2.5f);
     }
 
     /**
