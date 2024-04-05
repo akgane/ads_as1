@@ -3,15 +3,19 @@ import java.util.Scanner;
 
 public class MyApplication {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); //Scanner object for reading System.in stream.
+        //while works until user inputs 0 as option.
         while(true){
+            //try-catch is used for handling wrong input from user.
             try{
+                //Show list of methods, and ask to input option.
                 System.out.print(Constants.METHODS_LIST);
+                //If option 0 or [1;10] -> break loop or handle chosen method calling.
                 int option = scanner.nextInt();
                 if(option == 0) break;
                 else if(option >= 1 && option <= 10) chooseMethod(option, scanner);
             }catch (InputMismatchException e){
-                scanner.next();
+                scanner.next(); //Skip incorrect user input.
             }
         }
     }
@@ -31,10 +35,13 @@ public class MyApplication {
      * @param scanner The Scanner object, used for reading System.in stream.
      */
     static void chooseMethod(int option, Scanner scanner){
+        //Creating required variables.
         int n, k, a, b;
         String s;
         int[] arr;
-        switch (option){
+        switch (option){ //Depending on user choice, prepare and call required method.
+            //Firstly, program asks users for inputting required variables.
+            //Then, using formatted strings from Constants, calling required method and outputting it.
             case 1:
                 n = Utils.inputNumber('n', scanner);
                 arr = Utils.inputArr(n, scanner);
@@ -82,6 +89,7 @@ public class MyApplication {
                 System.out.printf(Constants.M_GCD, a, b, gcd(a, b));
                 break;
         }
+        //Force program to wait 2.5 seconds, after outputting result.
         Utils.sleep(2.5f);
     }
 
@@ -97,7 +105,7 @@ public class MyApplication {
      */
     static int minElement(int[] arr){
         int min = arr[0];
-        //iterating through all numbers from arr, comparing with variable 'min'
+        //Iterating through all numbers from arr, comparing with variable 'min'.
         for(int num : arr) if(min > num) min = num;
         return min;
     }
@@ -116,9 +124,9 @@ public class MyApplication {
      */
     static float average(int n, int[] arr){
         int sum = 0;
-        //summarizing all numbers from arr, getting total of all numbers
+        //Summarizing all numbers from arr, getting total of all numbers.
         for(int num : arr) sum += num;
-        //average = sum of all elements divided by count of elements
+        //Average = sum of all elements divided by count of elements.
         return (float) sum / n;
     }
 
@@ -135,9 +143,9 @@ public class MyApplication {
      * number is composite.
      */
     static boolean isPrime(int n){
-        if(n == 0 || n == 1) return false; //0 and 1 neither prime nor composite
-        //if there exists a positive integer x (x != 1, n)
-        //for which n/x = integer => n not prime
+        if(n == 0 || n == 1) return false; //0 and 1 neither prime nor composite.
+        //If there exists a positive integer x (x != 1, n)
+        //for which n/x = integer => n not prime.
         for(int i = 2; i < Math.sqrt(n); i++) if(n % i == 0) return false;
         return true;
     }
@@ -206,12 +214,12 @@ public class MyApplication {
      * @return The given array in reverse order.
      */
     static int[] reverseArray(int n, int[] arr){
-        //swap first element, that wasnt swapped yet, and last, that wasnt swapped
+        //Swap first element, that wasn't swapped yet, and last, that wasn't swapped.
         swapElements(arr.length - n, n - 1, arr);
-        //if n - 1 == Math.floor(arr.length / 2f) =>
-        //method already swapped middle elements => pointless to swap other elements
+        //If n - 1 == Math.floor(arr.length / 2f) =>
+        //method already swapped middle elements => pointless to swap other elements.
         if(n - 1 == Math.floor(arr.length / 2f)) return arr;
-        //move pointer n (last element that wasnt swapped)
+        //Move pointer n (last element that wasn't swapped).
         return reverseArray(n - 1, arr);
     }
 
@@ -225,11 +233,11 @@ public class MyApplication {
      * @param arr The array, which elements will be swapped.
      */
     static void swapElements(int i, int j, int[] arr){
-        //swap i-th and j-th element
+        //Swap i-th and j-th element.
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-        //pointless to return array, because arr is pointer to outer array
+        //Pointless to return array, because arr is pointer to outer array.
     }
 
     /**
@@ -245,10 +253,10 @@ public class MyApplication {
      * characters, or false otherwise.
      */
     static boolean isDigit(String s){
-        if(s.isEmpty()) return true; //all characters checked, there is no not digit chars
+        if(s.isEmpty()) return true; //All characters checked, there is no not digit chars.
         int c = s.charAt(0);
-        if(48 > c || 57 < c) return false; //checking character using ascii table
-        return isDigit(s.substring(1)); //skip first character
+        if(48 > c || 57 < c) return false; //Checking character using ascii table.
+        return isDigit(s.substring(1)); //Skip first character.
     }
 
     /**
@@ -267,7 +275,7 @@ public class MyApplication {
      * @return The binomial coefficient of numbers n and k.
      */
     static int binomial(int n, int k){
-        if(k == 0 || k == n) return 1; //binomial coefficient rules
+        if(k == 0 || k == n) return 1; //Binomial coefficient rules.
         return binomial(n - 1, k - 1) + binomial(n - 1, k);
     }
 
@@ -285,7 +293,7 @@ public class MyApplication {
      * @return The greatest common divisor (GCD) of 'a' and 'b'.
      */
     static int gcd(int a, int b){
-        //gcd rules
+        //GCD rules.
         if(a == 0) return b;
         if(b == 0) return a;
         return gcd(b, a % b);

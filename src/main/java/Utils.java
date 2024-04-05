@@ -12,13 +12,14 @@ public class Utils {
      * @return The number entered by the user.
      */
     public static int inputNumber(char c, Scanner scanner){
+        //Try asking user to input required number, until it happens.
         while(true) {
             System.out.printf("Enter number %c: ", c);
             try {
                 return scanner.nextInt();
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException e) { //User input is incorrect, for example user entered string.
                 System.out.println(Constants.WRONG_INPUT);
-                scanner.next();
+                scanner.next(); //Skip wrong input.
             }
         }
     }
@@ -31,14 +32,14 @@ public class Utils {
      * @return The string entered by the user.
      */
     public static String inputString(Scanner scanner){
-        scanner.nextLine();
+        scanner.nextLine(); //Skip first, empty, string.
         while(true) {
             System.out.print("Enter string: ");
             try{
                 String input = scanner.nextLine();
                 if(!input.isEmpty()) return input;
                 throw new InputMismatchException();
-            }catch (InputMismatchException e){
+            }catch (InputMismatchException e){ //User inputted empty string.
                 System.out.println(Constants.WRONG_INPUT);
             }
         }
@@ -53,15 +54,15 @@ public class Utils {
      * @return The integer array entered by the user.
      */
     public static int[] inputArr(int n, Scanner scanner){
-        int[] input = new int[n];
+        int[] input = new int[n]; //Initializing integer array of size n.
         for(int i = 0; i < n; i++){
             try{
                 System.out.printf("Enter %d-th number: ", i);
                 input[i] = scanner.nextInt();
-            }catch (InputMismatchException e){
+            }catch (InputMismatchException e){ //User input was incorrect. Skip input, decrease i variable.
                 System.out.println(Constants.WRONG_INPUT);
                 scanner.next();
-                i--;
+                i--; //It is necessary, because if input was incorrect, current i-th element will be skipped.
             }
         }
         return input;
@@ -80,9 +81,10 @@ public class Utils {
         res.append("[");
         for(int i = 0; i < arr.length; i++){
             res.append(arr[i]);
-            res.append(((i + 1) % arr.length == 0) ? "]" : ", ");
+            res.append(((i + 1) % arr.length == 0) ? "]" : ", "); //If i = index of last element in array =>
+                                                                  //close brackets. Put comma otherwise.
         }
-        return res.toString();
+        return res.toString(); //StringBuilder != String, we need to convert it.
     }
 
     /**
@@ -94,7 +96,7 @@ public class Utils {
      */
     public static void sleep(float seconds){
         try{
-            Thread.sleep((long)(seconds * 1000));
+            Thread.sleep((long)(seconds * 1000)); //Force program to sleep required amount of milliseconds.
         }catch (InterruptedException e){
             System.out.println(e + " in Utils.sleep method.");
         }
