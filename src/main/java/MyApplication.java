@@ -7,7 +7,11 @@ public class MyApplication {
 
 //        System.out.println(average(n, arr));
 
-        System.out.println(isPrime(n));
+//        System.out.println(isPrime(n));
+
+//        System.out.println(factorial(n));
+
+//        System.out.println(fibonacci(n));
     }
 
     static int minElement(int n, int[] arr){
@@ -26,5 +30,16 @@ public class MyApplication {
         if(n == 0 || n == 1) return false;
         for(int i = 2; i < Math.sqrt(n); i++) if(n % i == 0) return false;
         return true;
+    }
+
+    static int factorial(int n){
+        if(n == 1) return 1;
+        return n * factorial(n - 1);
+    }
+
+    static int fibonacci(int n){
+        if(n == 1) return 1;
+        else if (n == 0) return 0;
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 }
