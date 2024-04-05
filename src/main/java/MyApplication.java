@@ -12,6 +12,12 @@ public class MyApplication {
 //        System.out.println(factorial(n));
 
 //        System.out.println(fibonacci(n));
+
+//        System.out.println(power(3, 3));
+
+        int[] result = reverseArray(n, arr);
+        for(int i : result) System.out.print(i + " ");
+        System.out.println();
     }
 
     static int minElement(int n, int[] arr){
@@ -41,5 +47,22 @@ public class MyApplication {
         if(n == 1) return 1;
         else if (n == 0) return 0;
         return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    static int power(int a, int n){
+        if(n == 1) return a;
+        return a * power(a, n - 1);
+    }
+
+    static int[] reverseArray(int n, int[] arr){
+        swapElements(arr.length - n, n - 1, arr);
+        if(n - 1 == Math.floor(arr.length / 2f)) return arr;
+        return reverseArray(n - 1, arr);
+    }
+
+    static void swapElements(int i, int j, int[] arr){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
