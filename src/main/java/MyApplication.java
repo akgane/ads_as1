@@ -21,7 +21,9 @@ public class MyApplication {
 
 //        System.out.println(isDigit("123a321"));
 
-        System.out.println(binomial(7, 3));
+//        System.out.println(binomial(7, 3));
+
+        System.out.println(gcd(32, 48));
     }
 
     static int minElement(int n, int[] arr){
@@ -80,5 +82,11 @@ public class MyApplication {
     static int binomial(int n, int k){
         if(k == 0 || k == n) return 1;
         return binomial(n - 1, k - 1) + binomial(n - 1, k);
+    }
+
+    static int gcd(int a, int b){
+        if(a == 0) return b;
+        if(b == 0) return a;
+        return gcd(b, a % b);
     }
 }
