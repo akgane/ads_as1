@@ -28,30 +28,38 @@ public class MyApplication {
 
     static int minElement(int n, int[] arr){
         int min = arr[0];
-        for(int i = 0; i < n; i++) if(min > arr[i]) min = arr[i];
+        //iterating through all numbers from arr, comparing with variable 'min'
+        for(int num : arr) if(min > num) min = num;
         return min;
     }
 
     static float average(int n, int[] arr){
         int sum = 0;
+        //summarizing all numbers from arr, getting total of all numbers
         for(int num : arr) sum += num;
+        //average = sum of all elements divided by count of elements
         return (float) sum / n;
     }
 
     static boolean isPrime(int n){
-        if(n == 0 || n == 1) return false;
+        if(n == 0 || n == 1) return false; //0 and 1 neither prime nor composite
+        //if there exists a positive integer x (x != 1, n)
+        //for which n/x = integer => n not prime
         for(int i = 2; i < Math.sqrt(n); i++) if(n % i == 0) return false;
         return true;
     }
 
     static int factorial(int n){
         if(n == 1) return 1;
+        //factorial(n) = 1*2*3*...*n
         return n * factorial(n - 1);
     }
 
     static int fibonacci(int n){
+        //fibonacci(1) = 1, fibonacci(0) = 0
         if(n == 1) return 1;
         else if (n == 0) return 0;
+        //fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
@@ -61,30 +69,37 @@ public class MyApplication {
     }
 
     static int[] reverseArray(int n, int[] arr){
+        //swap first element, that wasnt swapped yet, and last, that wasnt swapped
         swapElements(arr.length - n, n - 1, arr);
+        //if n - 1 == Math.floor(arr.length / 2f) =>
+        //method already swapped middle elements => pointless to swap other elements
         if(n - 1 == Math.floor(arr.length / 2f)) return arr;
+        //move pointer n (last element that wasnt swapped)
         return reverseArray(n - 1, arr);
     }
 
     static void swapElements(int i, int j, int[] arr){
+        //swap i-th and j-th element
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+        //pointless to return array, because arr is pointer to outer array
     }
 
     static boolean isDigit(String s){
-        if(s.isEmpty()) return true;
+        if(s.isEmpty()) return true; //all characters checked, there is no not digit chars
         int c = s.charAt(0);
-        if(48 > c || 57 < c) return false;
-        return isDigit(s.substring(1));
+        if(48 > c || 57 < c) return false; //checking character using ascii table
+        return isDigit(s.substring(1)); //skip first character
     }
 
     static int binomial(int n, int k){
-        if(k == 0 || k == n) return 1;
+        if(k == 0 || k == n) return 1; //binomial coefficient rules
         return binomial(n - 1, k - 1) + binomial(n - 1, k);
     }
 
     static int gcd(int a, int b){
+        //gcd rules
         if(a == 0) return b;
         if(b == 0) return a;
         return gcd(b, a % b);
