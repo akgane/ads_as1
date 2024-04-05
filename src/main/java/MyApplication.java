@@ -100,6 +100,17 @@ public class MyApplication {
         return n * factorial(n - 1);
     }
 
+    /**
+     * This method calculates n-th element in the Fibonacci sequence.
+     * It uses a recursive approach.
+     * Time complexity: O(2^n), where n is the given number.
+     * The recursive algorithm calls itself for each non-base case,
+     * resulting in exponential time complexity.
+     *
+     * @param n The index of the number in the Fibonacci sequence
+     *          to be calculated.
+     * @return The n-th element in the Fibonacci sequence.
+     */
     static int fibonacci(int n){
         //fibonacci(1) = 1, fibonacci(0) = 0
         if(n == 1) return 1;
@@ -108,11 +119,34 @@ public class MyApplication {
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
+    /**
+     * This method calculates the power n of a number.
+     * It uses a recursive approach.
+     * Time complexity: O(n), where n is the exponent.
+     * The recursive algorithm multiplies the base 'a' by itself
+     * 'n' times, resulting in linear time complexity.
+     *
+     * @param a The given base number.
+     * @param n The given exponent.
+     * @return The number a^n.
+     */
     static int power(int a, int n){
         if(n == 1) return a;
         return a * power(a, n - 1);
     }
 
+    /**
+     * This method reverses a given array.
+     * It uses a recursive approach.
+     * Time complexity: O(n), where n is the length of the array.
+     * The recursive algorithm swaps the elements at the beginning
+     * and end of the array, and then recursively calls itself on
+     * the rest of the array. This results in linear time complexity.
+     *
+     * @param n The given number of elements in array.
+     * @param arr The given array of integer numbers.
+     * @return The given array in reverse order.
+     */
     static int[] reverseArray(int n, int[] arr){
         //swap first element, that wasnt swapped yet, and last, that wasnt swapped
         swapElements(arr.length - n, n - 1, arr);
@@ -123,6 +157,15 @@ public class MyApplication {
         return reverseArray(n - 1, arr);
     }
 
+    /**
+     * This method swaps i-th and j-th elements of array.
+     * It operates with constants.
+     * Time complexity: O(1), resulting in constant time complexity.
+     *
+     * @param i The index of first element to be swapped.
+     * @param j The index of second element to be swapped.
+     * @param arr The array, which elements will be swapped.
+     */
     static void swapElements(int i, int j, int[] arr){
         //swap i-th and j-th element
         int temp = arr[i];
@@ -131,6 +174,18 @@ public class MyApplication {
         //pointless to return array, because arr is pointer to outer array
     }
 
+    /**
+     * This method checks if a given string contains only digits.
+     * It uses a recursive approach.
+     * Time complexity: O(n), where n is the length of the string.
+     * The recursive algorithm checks if first character is digit,
+     * and then calls itself for rest of characters in the string.
+     * This results in linear time complexity.
+     *
+     * @param s The given string to be checked.
+     * @return true if the given string contains only numeric
+     * characters, or false otherwise.
+     */
     static boolean isDigit(String s){
         if(s.isEmpty()) return true; //all characters checked, there is no not digit chars
         int c = s.charAt(0);
@@ -138,11 +193,39 @@ public class MyApplication {
         return isDigit(s.substring(1)); //skip first character
     }
 
+    /**
+     * This method calculates the binomial coefficient C(n, k).
+     * It uses a recursive approach based on the identity
+     * C(n, k) = C(n - 1, k - 1) + C(n - 1, k).
+     * Time complexity: O(2^n), where n is the first parameter.
+     * This is because each call to this method results in two
+     * recursive calls unless it falls into the base case.
+     * The recursive algorithm calculates the binomial coefficient
+     * by breaking it down into two smaller coefficients, resulting
+     * in the exponential time complexity.
+     *
+     * @param n The n number of binomial coefficient to be calculated.
+     * @param k The k number of binomial coefficient to be calculated.
+     * @return The binomial coefficient of numbers n and k.
+     */
     static int binomial(int n, int k){
         if(k == 0 || k == n) return 1; //binomial coefficient rules
         return binomial(n - 1, k - 1) + binomial(n - 1, k);
     }
 
+    /**
+     * This method calculates the greatest common divisor
+     * (GCD) of two numbers.
+     * It uses a recursive approach, which need to be used
+     * in Euclidean algorithm.
+     * Time complexity: O(log(min(a,b)), where 'a' and 'b'
+     * are the input number. With each recursive call, the
+     * problem size decreases geometrically.
+     *
+     * @param a The first number of GCD.
+     * @param b The second number of GCD.
+     * @return The greatest common divisor (GCD) of 'a' and 'b'.
+     */
     static int gcd(int a, int b){
         //gcd rules
         if(a == 0) return b;
