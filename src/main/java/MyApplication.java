@@ -1,29 +1,73 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class MyApplication {
     public static void main(String[] args) {
-        int n = 5;
-        int[] arr = new int[]{3, 1, 2, 6, 3};
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            try{
+                System.out.print(Constants.METHODS_LIST);
+                int option = scanner.nextInt();
+                if(option == 0) break;
+                else if(option >= 1 && option <= 10) chooseMethod(option, scanner);
+            }catch (InputMismatchException e){
+                scanner.next();
+            }
+        }
+    }
 
-//        System.out.println(minElement(n, arr));
-
-//        System.out.println(average(n, arr));
-
-//        System.out.println(isPrime(n));
-
-//        System.out.println(factorial(n));
-
-//        System.out.println(fibonacci(n));
-
-//        System.out.println(power(3, 3));
-
-//        int[] result = reverseArray(n, arr);
-//        for(int i : result) System.out.print(i + " ");
-//        System.out.println();
-
-//        System.out.println(isDigit("123a321"));
-
-//        System.out.println(binomial(7, 3));
-
-        System.out.println(gcd(32, 48));
+    static void chooseMethod(int option, Scanner scanner){
+        int n, k, a, b;
+        String s;
+        int[] arr;
+        switch (option){
+            case 1:
+                n = Utils.inputNumber('n', scanner);
+                arr = Utils.inputArr(n, scanner);
+                System.out.printf(Constants.M_MINIMAL_ELEMENT, minElement(n, arr));
+                break;
+            case 2:
+                n = Utils.inputNumber('n', scanner);
+                arr = Utils.inputArr(n, scanner);
+                System.out.printf(Constants.M_AVERAGE, average(n, arr));
+                break;
+            case 3:
+                n = Utils.inputNumber('n', scanner);
+                System.out.printf(Constants.M_NUMBER_DEFINITION, n, (isPrime(n) ? "prime" : "composite"));
+                break;
+            case 4:
+                n = Utils.inputNumber('n', scanner);
+                System.out.printf(Constants.M_FACTORIAL, n, factorial(n));
+                break;
+            case 5:
+                n = Utils.inputNumber('n', scanner);
+                System.out.printf(Constants.M_FIBONACCI, n, fibonacci(n));
+                break;
+            case 6:
+                a = Utils.inputNumber('a', scanner);
+                n = Utils.inputNumber('n', scanner);
+                System.out.printf(Constants.M_POWER, a, n, power(a, n));
+                break;
+            case 7:
+                n = Utils.inputNumber('n', scanner);
+                arr = Utils.inputArr(n, scanner);
+                System.out.printf(Constants.M_REVERSE, Utils.arrToString(reverseArray(n, arr)));
+                break;
+            case 8:
+                s = Utils.inputString(scanner);
+                System.out.printf(Constants.M_IS_DIGIT, s, (isDigit(s) ? "is" : "is not"));
+                break;
+            case 9:
+                n = Utils.inputNumber('n', scanner);
+                k = Utils.inputNumber('k', scanner);
+                System.out.printf(Constants.M_BINOMIAL, n, k, binomial(n, k));
+                break;
+            case 10:
+                a = Utils.inputNumber('a', scanner);
+                b = Utils.inputNumber('b', scanner);
+                System.out.printf(Constants.M_GCD, a, b, gcd(a, b));
+                break;
+        }
     }
 
     /**
