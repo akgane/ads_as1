@@ -39,7 +39,7 @@ public class MyApplication {
             case 1:
                 n = Utils.inputNumber('n', scanner);
                 arr = Utils.inputArr(n, scanner);
-                System.out.printf(Constants.M_MINIMAL_ELEMENT, minElement(n, arr));
+                System.out.printf(Constants.M_MINIMAL_ELEMENT, minElement(arr));
                 break;
             case 2:
                 n = Utils.inputNumber('n', scanner);
@@ -93,11 +93,10 @@ public class MyApplication {
      * For loop iterates through all elements of array,
      * resulting in linear time complexity.
      *
-     * @param n The given number of elements in array.
      * @param arr The given array of integer numbers of size n.
      * @return The minimum element of array.
      */
-    static int minElement(int n, int[] arr){
+    static int minElement(int[] arr){
         int min = arr[0];
         //iterating through all numbers from arr, comparing with variable 'min'
         for(int num : arr) if(min > num) min = num;
