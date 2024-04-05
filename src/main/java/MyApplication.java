@@ -26,6 +26,17 @@ public class MyApplication {
         System.out.println(gcd(32, 48));
     }
 
+    /**
+     * This method finds minimum element of given array.
+     * It uses a for loop.
+     * Time complexity: O(n), where n is the length of the array.
+     * For loop iterates through all elements of array,
+     * resulting in linear time complexity.
+     *
+     * @param n The given number of elements in array.
+     * @param arr The given array of integer numbers of size n.
+     * @return The minimum element of array.
+     */
     static int minElement(int n, int[] arr){
         int min = arr[0];
         //iterating through all numbers from arr, comparing with variable 'min'
@@ -33,6 +44,18 @@ public class MyApplication {
         return min;
     }
 
+    /**
+     * This method calculates the average of the elements of a given
+     * array.
+     * It uses a for loop.
+     * Time complexity: O(n), where n is the length of the array.
+     * For loop iterates through all elements of array, resulting
+     * in linear time complexity.
+     *
+     * @param n The given number of elements in array.
+     * @param arr The given array of integer numbers of size n.
+     * @return The average of numbers of array.
+     */
     static float average(int n, int[] arr){
         int sum = 0;
         //summarizing all numbers from arr, getting total of all numbers
@@ -41,6 +64,18 @@ public class MyApplication {
         return (float) sum / n;
     }
 
+    /**
+     * This method checks if given number is prime or composite.
+     * It uses a for loop.
+     * Time complexity: O(sqrt(n)), where n is the given number.
+     * For loop iterates through numbers from 2 to sqrt(n),
+     * resulting in square root time complexity.
+     *
+     * @param n The given number n, for which the method checks if
+     *          it is prime.
+     * @return true if given number is prime, or false if given
+     * number is composite.
+     */
     static boolean isPrime(int n){
         if(n == 0 || n == 1) return false; //0 and 1 neither prime nor composite
         //if there exists a positive integer x (x != 1, n)
@@ -49,6 +84,16 @@ public class MyApplication {
         return true;
     }
 
+    /**
+     * This method calculates the factorial of a given number.
+     * It uses a recursive approach.
+     * Time complexity: O(n), where n is the given number.
+     * The recursive algorithm iterates through all numbers from n
+     * to 1, resulting in linear time complexity.
+     *
+     * @param n The number for which the factorial is to be calculated.
+     * @return The factorial of the given number.
+     */
     static int factorial(int n){
         if(n == 1) return 1;
         //factorial(n) = 1*2*3*...*n
