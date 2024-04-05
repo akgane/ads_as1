@@ -15,9 +15,13 @@ public class MyApplication {
 
 //        System.out.println(power(3, 3));
 
-        int[] result = reverseArray(n, arr);
-        for(int i : result) System.out.print(i + " ");
-        System.out.println();
+//        int[] result = reverseArray(n, arr);
+//        for(int i : result) System.out.print(i + " ");
+//        System.out.println();
+
+//        System.out.println(isDigit("123a321"));
+
+        System.out.println(binomial(7, 3));
     }
 
     static int minElement(int n, int[] arr){
@@ -64,5 +68,17 @@ public class MyApplication {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+    static boolean isDigit(String s){
+        if(s.isEmpty()) return true;
+        int c = s.charAt(0);
+        if(48 > c || 57 < c) return false;
+        return isDigit(s.substring(1));
+    }
+
+    static int binomial(int n, int k){
+        if(k == 0 || k == n) return 1;
+        return binomial(n - 1, k - 1) + binomial(n - 1, k);
     }
 }
