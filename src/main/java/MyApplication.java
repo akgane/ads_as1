@@ -26,7 +26,6 @@ public class MyApplication {
      * getting values in 'case' blocks. User input is handled by the Utils
      * class methods. 'default' not necessary because chooseMethod other cases
      * are excluded in the main method.
-     *
      * Required method is called as value for placeholder in formatted string.
      * @param option The method, chosen by user in main method.
      * @param scanner The Scanner object, used for reading System.in stream.
