@@ -20,7 +20,7 @@ finding GCD.
 4. Follow the on-screen instructions: *choose method*, *input required parameters*.
 5. The output for chosen method will be displayed in *terminal*.</br>
 **5.1** As standard, program waits 2.5 seconds after showing the result. However, you can change this time to the time you need, by changing the following line:</br>
-```java
+```
         Utils.sleep(2.5f);
 ```
 in ***MyApplication*** class, ***chooseMethod()*** method.
